@@ -1,25 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
+//funcionan
+import Camera from './components/Camera/Camera';
+import Scanner from './components/Scanner/Scanner';
+import ReaderQR from './components/Scanner/ReaderQR'; 
+import { useState } from 'react';
+import { useEffect } from 'react';
+
 function App() {
+  const [typeScanner, setTypeScanner] = useState("");
+
+  const changeScanner = () => {
+    if (typeScanner == 'barcode') {
+      setTypeScanner('')
+    } else {
+      setTypeScanner('barcode')
+    }
+  }
+
+  useEffect(() => {
+    console.log(typeScanner);
+  }, [typeScanner])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Scanner
+        type={typeScanner}
+        width={'600px'}
+        height={'600px'}
+      /> 
+      <button onClick={changeScanner}>Cambiar Scanner</button>  
+    </>
   );
 }
 
