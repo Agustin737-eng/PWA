@@ -31,7 +31,7 @@ const ReaderQR = (Props) => {
                     constraints={constraints}
                     scanDelay={Props.delay ? Props.delay : false}
                     videoContainerStyle={{ width: constraints.width, height: constraints.height, paddingTop: '0%' }} 
-                    videoStyle={{ width: '100%', height: '100%' }}
+                    videoStyle={{ width: '100%', height: '100%' }} 
                 />
                 :<h1>Cargando..</h1>
             }

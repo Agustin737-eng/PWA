@@ -1,5 +1,6 @@
 import { React, useEffect, useRef } from 'react';
 import Quagga from 'quagga';
+import './BarcodeScanner.css'
 
 const BarcodeScanner = (Props) => {
     const Container = useRef(null)
@@ -19,7 +20,7 @@ const BarcodeScanner = (Props) => {
             decoder: {
                 format: "code_128_reader",
                 config: {
-                    supplements: ["ean_reader", "ean_8_reader"]
+                    supplements: ["ean_reader", "ean_8_reader"] 
                 }
             },
             locator: {
@@ -42,16 +43,18 @@ const BarcodeScanner = (Props) => {
 
     Quagga.onDetected((data) => {
         console.log(data.codeResult.code, 'RESULTADO');
-    });
+    }); 
 
     useEffect(() => {
+        console.log(Container.current.offsetWidth);
+        console.log(Container.current.offsetHeight);
         initScanner()
-    }, [Container.current])
+    }, [])
 
     return (
         <>
             <div style={{width: Props.width ? Props.width : '100%', height: Props.height ? Props.height : '500px'}} ref={Container}>   
-                <div id='camera'></div> 
+                <div id='camera' style={{width: '100%', height: '100%',position: 'relative', overflow: 'hidden'}} className='ContainerCamera'></div> 
             </div>
         </>
     )

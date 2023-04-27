@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
+import { defineCustomElements, addTheme } from '@scania/components';
+import { theme as scania } from '@scania/theme-light';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,3 +23,5 @@ serviceWorkerRegistration.register();
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+defineCustomElements();
+addTheme(scania)
